@@ -248,10 +248,8 @@ spec:
           value: "akka://scheduler-actor-system@$(POD_IP):{{ .Values.scheduler.endpoints.akkaPort }}"
 {{- end }}
 
-{{- if .Values.metrics.prometheusEnabled }}
         - name: "OPENWHISK_ENCODED_CONFIG"
           value: {{ template "openwhisk.whiskconfig" . }}
-{{- end }}
 {{ if or .Values.metrics.kamonEnabled .Values.metrics.prometheusEnabled }}
         - name: "METRICS_KAMON"
           value: "true"
